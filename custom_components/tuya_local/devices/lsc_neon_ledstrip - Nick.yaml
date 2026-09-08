@@ -111,8 +111,6 @@ entities:
         name: option
         optional: true
         mapping:
-          - dps_val: "AckKFBQAAAAyAS5kAPRkAS5kAPRk"
-            value: "Pink/Blue 4 Flowing"
           - dps_val: "ARUKUlLgAABkAMFhALQwALVSAMRj"
             value: "Iceland blue"
           - dps_val: "ARYKZGRgAABkAJJfAMZg"
@@ -146,7 +144,7 @@ entities:
           - dps_val: "AUwMMjIAAABkANhNAMFDAQNFAFw3"
             value: "City lights"
           - dps_val: "AU0NMjIAAABkAChkAF5CAMFkAP9Q"
-            value: "Colour marbles"
+            value: "Color marbles"
           - dps_val: "AU4OMjIAAABkAD5fAL5c"
             value: "Summer train"
           - dps_val: "AU8PGRkAAABkALxkAC1OAABkAGQ8"
@@ -172,19 +170,19 @@ entities:
           - dps_val: "ASkCYWHgAABkAAtkANlkACtkAJFkALlk"
             value: "Christmas"
           - dps_val: "ASoBZGRgAABkARVkAQVkAUVkAS9k"
-            value: "Valentines's Day"
+            value: "Valentine's day"
           - dps_val: "ASsDWlrgAABkAABXARZkANpkALNkAJVk"
             value: "Halloween"
           - dps_val: "ASwKSEhgAABkAD1kAQxbALpJABdh"
-            value: "Thanksgiving Day"
+            value: "Thanksgiving day"
           - dps_val: "AS0CWVlgAABkAJxjALxiAHtg"
-            value: "Forest Day"
+            value: "Forest day"
           - dps_val: "AS4DWlpgAABkAT42AQxWAR8j"
-            value: "Mothers Day"
+            value: "Mother's day"
           - dps_val: "AS8CZGTgAABkANxCALZKAOFN"
-            value: "Fathers Day"
+            value: "Father's day"
           - dps_val: "ATACXl5gAABkAABkAHhkALtk"
-            value: "Football Day"
+            value: "Football day"
           - dps_val: "ATMDUlJgAABkAIhQANI5APsn"
             value: "Summer idyll"
           - dps_val: "ATQDXV1gAABkAPc2ATUrAMY0AJEp"
@@ -201,6 +199,8 @@ entities:
             value: "Summer wind"
           - dps_val: "AToCXV3gAABNALReARxkAOhJAMZf"
             value: "Planet journey"
+          - dps_val: "AckKFBQAAAAyAS5kAPRkAS5kAPRk"
+            value: "Pink/Blue 4 Flowing"
   - entity: text
     name: Paint
     category: config
