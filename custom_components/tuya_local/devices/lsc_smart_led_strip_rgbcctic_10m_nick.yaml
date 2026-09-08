@@ -1,0 +1,264 @@
+name: LSC Smart LED Strip RGBCCTIC 10M Nick
+products:
+  - id: oip8yy66iqej8b54
+    manufacturer: LSC
+    model: Smart Led strip RGBCCTIC 10M
+    model_id: "6125000600"
+
+entities:
+  - entity: light
+    dps:
+      - id: 20
+        type: boolean
+        name: switch
+      - id: 21
+        type: string
+        name: color_mode
+        mapping:
+          - dps_val: white
+            value: color_temp
+          - dps_val: colour
+            value: hs
+          - dps_val: scene
+            value: Scene
+          - dps_val: music
+            value: Music
+      - id: 22
+        name: brightness
+        type: integer
+        optional: true
+        range:
+          min: 10
+          max: 1000
+        mapping:
+          - dps_val: null
+            value: 0
+      - id: 23
+        name: color_temp
+        type: integer
+        optional: true
+        range:
+          min: 0
+          max: 1000
+        mapping:
+          - target_range:
+              min: 2700
+              max: 6500
+      - id: 24
+        name: rgbhsv
+        type: hex
+        optional: true
+        format:
+          - name: h
+            bytes: 2
+            range:
+              min: 0
+              max: 360
+          - name: s
+            bytes: 2
+            range:
+              min: 0
+              max: 1000
+          - name: v
+            bytes: 2
+            range:
+              min: 0
+              max: 1000
+      - id: 27
+        name: music_data
+        type: hex
+        optional: true
+      - id: 52
+        name: dreamlight_music_data
+        type: string
+        optional: true
+
+  - entity: time
+    translation_key: timer
+    category: config
+    dps:
+      - id: 26
+        name: second
+        type: integer
+        optional: true
+        range:
+          min: 0
+          max: 86400
+
+  - entity: select
+    name: Color mode
+    icon: "mdi:palette"
+    category: config
+    dps:
+      - id: 21
+        type: string
+        name: option
+        optional: true
+        mapping:
+          - dps_val: colour
+            value: Color
+          - dps_val: scene
+            value: Scene
+          - dps_val: music
+            value: Music
+          - dps_val: white
+            value: White
+
+  - entity: text
+    name: Scene Code (Raw)
+    icon: "mdi:code-braces"
+    category: diagnostic
+    dps:
+      - id: 56
+        type: string
+        name: value
+        optional: true
+
+  - entity: text
+    name: Paint
+    category: config
+    icon: "mdi:palette"
+    hidden: true
+    dps:
+      - id: 61
+        type: base64
+        optional: true
+        name: value
+
+  - entity: select
+    translation_key: scene
+    category: config
+    dps:
+      - id: 56
+        type: string
+        name: option
+        optional: true
+        mapping:
+          - dps_val: "ARUKUlLgAABkAMFhAAAAAGQAtDAAAAAAZAC1UgAAAABkAMRjAAAAAA=="
+            value: "Iceland Blue"
+          - dps_val: "ARYKZGRgAABkAJJfAAAAAGQAxmAAAAAA"
+            value: "Glacier Express"
+          - dps_val: "ARcDXl5gAABkADgvAAAAAGQAHlwAAAAAZADVRQAAAABkARpkAAAAAA=="
+            value: "Sea Of Clouds"
+          - dps_val: "ARgCZGTgAABkALI5AAAAAGQBCmQAAAAAZAEtZAAAAABkAT9kAAAAAA=="
+            value: "Fireworks at sea"
+          - dps_val: "ARkKVFRgAABkALEsAAAAAGQAwGQAAAAA"
+            value: "Hut in the snow"
+          - dps_val: "ARoDS0vgAABkAOA5AAAAAGQBCVMAAAAA"
+            value: "Firefly night"
+          - dps_val: "ARsDX19gAABkAK45AAAAAGQAxF0AAAAAZAD5ZAAAAAA="
+            value: "Northland"
+          - dps_val: "ARwKWlrgAABSAJ1kAAAAAFIAjmQAAAAA"
+            value: "Grassland"
+          - dps_val: "AR0DUlLgAABkAK5kAAAAAGQApmQAAAAAZADBZAAAAABkAMxkAAAAAA=="
+            value: "Northern lights"
+          - dps_val: "AR4KUlLgAABkABlkAAAAAGQAIl4AAAAAZAAsWwAAAABkABRkAAAAAGQADGQAAAAA"
+            value: "Late autumn"
+          - dps_val: "AUcFTU0AAABkAQNFAAAAAGQAwUMAAAAA"
+            value: "Dream meteor"
+          - dps_val: "AUgGMjIAAABkAU5BAAAAAGQAH0kAAAAA"
+            value: "Early spring"
+          - dps_val: "AUkHDg4AAABkANo3AAAAAGQBUkEAAAAAZABcNwAAAAA="
+            value: "Spring outing"
+          - dps_val: "AUoIMjIAAABkAPdQAAAAAGQAKU8AAAAAZAENOAAAAABkAKMnAAAAAA=="
+            value: "Night Service"
+          - dps_val: "AUsJMjIAAABkAQNFAAAAAGQAQToAAAAAZAAlSwAAAABkAF5CAAAAAA=="
+            value: "Wind chime"
+          - dps_val: "AUwMMjIAAABkANhNAAAAAGQAwUMAAAAAZAEDRQAAAABkAFw3AAAAAA=="
+            value: "City Lights"
+          - dps_val: "AU0NMjIAAABkAChkAAAAAGQAXkIAAAAAZADBZAAAAABkAP9QAAAAAA=="
+            value: "Color marbles"
+          - dps_val: "AU4OMjIAAABkAD5fAAAAAGQAvlwAAAAA"
+            value: "Summer train"
+          - dps_val: "AU8PGRkAAABkALxkAAAAAGQALU4AAAAAZAAAZAAAAABkAGQ8AAAAAA=="
+            value: "Christmas Eve"
+          - dps_val: "AVAQMjIAAABkAOZHAAAAAGQAZDwAAAAAZAEZTQAAAABkALg5AAAAAA=="
+            value: "Dream Sea"
+          - dps_val: "AR8CX19gAABkARBkAAAAAGQA0mQAAAAAZACtZAAAAABkAItkAAAAAA=="
+            value: "Game"
+          - dps_val: "ASAKVVVgAABkAMJYAAAAAGQBPjMAAAAAZAD/RgAAAABkAR1kAAAAAA=="
+            value: "Holiday"
+          - dps_val: "ASEDPDxgAABkAL8YAAAAAGQBBBcAAAAA"
+            value: "Work"
+          - dps_val: "ASIEZGRgAABkANdcAAAAAGQAvFMAAAAAZAA3HgAAAABkACw/AAAAAGQBYT8AAAAA"
+            value: "Party"
+          - dps_val: "ASMCZGRgAABkAQhLAAAAAGQAsS8AAAAAZADNVwAAAAA="
+            value: "Trend"
+          - dps_val: "ASQKS0tgAABkALwmAAAAAGQA1lUAAAAAZAEYZAAAAABkAPlNAAAAAA=="
+            value: "Sports"
+          - dps_val: "ASUDQ0NgAABkALc1AAAAAGQAm1QAAAAAZADNYQAAAAA="
+            value: "Meditation"
+          - dps_val: "ASYBWVngAABkARlHAAAAAGQBST0AAAAAZADNYQAAAABkACZkAAAAAA=="
+            value: "Dating"
+          - dps_val: "AYIPMjIAAABkATxkAAAAAGQBEWQAAAAAZACzZAAAAAAAAAAAA+gB4Q=="
+            value: "Cyberpunk"
+          - dps_val: "AYMDR0cAAABkANhHAAAAAGQAD2QAAAAAZAE4ZAAAAABkAAFUAAAAAA=="
+            value: "Coral Sea"
+          - dps_val: "ASkCYWHgAABkAAtkAAAAAGQA2WQAAAAAZAArZAAAAABkAJFkAAAAAGQAuWQAAAAA"
+            value: "Christmas"
+          - dps_val: "ASoBZGRgAABkARVkAAAAAGQBBWQAAAAAZAFFZAAAAABkAS9kAAAAAA=="
+            value: "Valentine's Day"
+          - dps_val: "ASsDWlrgAABkAABXAAAAAGQBFmQAAAAAZADaZAAAAABkALNkAAAAAGQAlWQAAAAA"
+            value: "Halloween"
+          - dps_val: "ASwKSEhgAABkAD1kAAAAAGQBDFsAAAAAZAC6SQAAAABkABdhAAAAAA=="
+            value: "Thanksgiving Day"
+          - dps_val: "AS0CWVlgAABkAJxjAAAAAGQAvGIAAAAAZAB7YAAAAAA="
+            value: "Forest Day"
+          - dps_val: "AS4DWlpgAABkAT42AAAAAGQBDFYAAAAAZAEfIwAAAAA="
+            value: "Mothers Day"
+          - dps_val: "AS8CZGTgAABkANxCAAAAAGQAtkoAAAAAZADhTQAAAAA="
+            value: "Father's Day"
+          - dps_val: "ATACXl5gAABkAABkAAAAAGQAeGQAAAAAZAC7ZAAAAAA="
+            value: "Football Day"
+          - dps_val: "ATMDUlJgAABkAIhQAAAAAGQA0jkAAAAAZAD7JwAAAAA="
+            value: "Summer idyll"
+          - dps_val: "ATQDXV1gAABkAPc2AAAAAGQBNSsAAAAAZADGNAAAAABkAJEpAAAAAA=="
+            value: "Dream of the sea"
+          - dps_val: "ATUDUlJgAABkARJiAAAAAGQBMF0AAAAA"
+            value: "Love and dream"
+          - dps_val: "ATYCSUlgAABkAGY8AAAAAGQAPEkAAAAAZAAeZAAAAAA="
+            value: "Spring fishing"
+          - dps_val: "ATcKWlpgAABkADNYAAAAAGQAGGQAAAAAZAEARQAAAABkAONeAAAAAGQArDAAAAAA"
+            value: "Neon world"
+          - dps_val: "ATgCV1fgAABkAQxkAAAAAGQBGkEAAAAAZAFHWQAAAABkABVkAAAAAGQAPDgAAAAA"
+            value: "Dreamland"
+          - dps_val: "ATkDSEjgAABkAFlkAAAAAGQAs0cAAAAA"
+            value: "Summer wind"
+          - dps_val: "AToCXV3gAABNALReAAAAAE0BHGQAAAAATQDoSQAAAABNAMZfAAAAAA=="
+            value: "Planet journey"
+          - dps_val: "AWYBUFAAAAAAAAAAAlYD6AAAAAACuwOTAAAAAAMfAwgAAAAAA4UC1w=="
+            value: "Cold Light"
+          - dps_val: "AWgBT08AAAAAAAAAAyMD6AAAAAADJQAAAAAAAAMfAtYAAAAAAx8BMg=="
+            value: "Blue Sky"
+          - dps_val: "AWkBUFAAAAAAAAAAAxoC6wAAAAADJANSAAAAAAMkA6wAAAAAAyQD6A=="
+            value: "Snow World"
+          - dps_val: "AWsBT0+CAAAAAAAAAxkBagAAAAADHALxAAAAAAMcAMUAAAAAAxwD6A=="
+            value: "Start River"
+          - dps_val: "AWcBUFAAAAAAAAAAAx0AAAAAAAADHQEMAAAAAAMdAdAAAAAAAx0CZA=="
+            value: "Warm Light"
+          - dps_val: "AWoBUVEAAAAAAAAAAyMCLgAAAAADHAFYAAAAAAMcAJwAAAAAAxwAAA=="
+            value: "Warm Wind"
+          - dps_val: "AckKFBQAAAAmATdkAAAAACUAv2QAAAAAJgE3ZAAAAAAlAL9kAAAAAA=="
+            value: "Party1 (Roze/Cyan)"
+          - dps_val: "AckKFBQAAAAsAHpkAAAAACUAAmQAAAAAJgB4ZAAAAAAlAAJkAAAAAA=="
+            value: "Flowing Rood/Groen"
+          - dps_val: "AckKFBQAAAAsAOhkAAAAACUBPGQAAAAAJgDnZAAAAAAlATxkAAAAAA=="
+            value: "Flowing Blauw/Roze"
+          - dps_val: "AckKFBQAAABkAOhkAAAAAGQBPGQAAAAAZADnZAAAAABkATxkAAAAAA=="
+            value: "Party Blauw/Rose 100% Helderheid"
+          - dps_val: "AQAKMjIAAABkAAFkAAAAAGQAcmQAAAAA"
+            value: "Rood/Groen 2 kleuren 100% Helderheid"
+          - dps_val: "AQAKMjIAAABkADxkAAAAAGQA7WQAAAAA"
+            value: "Geel:Blauw 2 kleuren 100% Helderheid"
+          - dps_val: "AQAKMjIAAABkADxkAAAAAGQA7WQAAAAAZAA8ZAAAAABkAO1kAAAAAA=="
+            value: "Geel:Blauw 4 kleuren 100% Helderheid"
+          - dps_val: "AcoKMjIAAABkADxkAAAAAGQA7WQAAAAAZAA8ZAAAAABkAO1kAAAAAA=="
+            value: "Geel:Blauw 4 kleuren (Na opslaan)"
+          - dps_val: "AQAKMjIAAABkADxkAAAAAGQA7WQAAAAAZAA8ZAAAAABkAO1kAAAAAGQAPGQAAAAAZADtZAAAAAA="
+            value: "Geel:Blauw 6 kleuren 100% Helderheid"
+          - dps_val: "AcoKMjIAAABkADxkAAAAAGQA7WQAAAAAZAA8ZAAAAABkAO1kAAAAAGQAPGQAAAAAZADtZAAAAAA="
+            value: "Geel:Blauw 6 kleuren (Na opslaan)"
+          - dps_val: "AcoKMjIAAABkADxkAAAAAGQA7WQAAAAAZAA8ZAAAAABkAO1kAAAAAGQAPGQAAAAAZADtZAAAAABkADxkAAAAAGQA7WQAAAAA"
+            value: "Geel:Blauw 8 kleuren 100% Helderheid"
+            
+            
